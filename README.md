@@ -25,10 +25,10 @@ conda activate wiser
 conda install conda-forge::langgraph-prebuilt
 ```
 4. Download and Install Ollama Server
-    a) Go to the Ollama Downloads Page.
-    b) Choose the installer for your operating system (Windows, macOS, or Linux).
-    c)	Run the installer and complete the setup.
-    d)	Once installed, download a model by running this command in your command prompt:
+    a. Go to the Ollama Downloads Page.
+    b. Choose the installer for your operating system (Windows, macOS, or Linux).
+    c.	Run the installer and complete the setup.
+    d.	Once installed, download a model by running this command in your command prompt:
     ```bash
    ollama run llama3.1
     ```
