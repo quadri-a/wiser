@@ -1,20 +1,18 @@
 ## Overview
 This repository features the AI-assisted Wireless Systems Engineering and Research (WiSER) platform. 
-WiSER is developed to facilitate intent-based wireless network management. 
-In particular, we have developed a Multi-Agent open source small/medium-sized Language Model (MAxLM)-based user 
-scheduling and resource allocation (SRA) scheme. Figure below illustrates the modeling of the AP-STA connections as the agents and their interaction with the WLAN environment as a Markov Decision Process (MDP) problem. 
+WiSER is developed to facilitate intent-based wireless user scheduling and resource allocation (SRA). 
+In particular, we have proposed the Multi-Agent open source small/medium-sized Language Model (MAxLM)-based SRA for the Uplink of a multiuser (MU) MIMO-OFDMA-enabled WLAN. 
+Figure below illustrates the modeling of the AP-STA connections as the agents and their interaction in the WLAN environment as a Markov Decision Process (MDP) problem. The MDP components are the agent, agent's state space, action space, and feedback.
 
 <img width="1744" height="1095" alt="sra_mdp" src="https://github.com/user-attachments/assets/16c4e78b-d2a2-4da5-a2da-b9c26ed99966" />
 
-
-We have proposed the MAxLM-optimized SRA for the Uplink of a multiuser (MU) MIMO-OFDMA-enabled WLAN in our recent submission to IEEE Globecom 26.
-The preprint of the submitted paper will be made available soon.
-The main features of WiSER are listed below -
-1) A multi-agent framework that enables an xLM to asynchronously perform SRA and simplify complex resource optimization tasks.
+To orchestrate the workflow for autonomous SRA, WiSER is equipped with the following features:
+1) Multi-agent realization enables the Scheduler (xLM) to asynchronously perform SRA and simplify complex resource optimization tasks.
 2) Facilitates user's intent-based resource allocation for multiple time-slotted wireless transmissions.
-3) Achieves autonomous SRA by using the Adaptive Context Management feature that accurately characterizes the dynamically changing WLAN environment to the xLM.
-4) Guarantees reliable parsing of the xLM's intent for SRA.
-5) Allows loading, storing, auditing network data, user's SRA intents, and xLM's response with the file manager.
+3) Achieves autonomous SRA by using the Adaptive Context Management feature in the Context Manager to characterize the dynamically changing WLAN environment to the xLM.
+4) Guarantees reliable parsing of the xLM's intent for SRA using the Parser.
+5) Allows loading, storing, auditing network data, user's SRA intents, and xLM's response using the File Manager.
+6) Render typical wireless environment/channel conditions using the Environment Manager.
 
 ## Quickstart
 
