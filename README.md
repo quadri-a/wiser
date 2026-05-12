@@ -16,24 +16,30 @@ To orchestrate the workflow for autonomous SRA, WiSER is equipped with the follo
 
 ## Quickstart
 1. Open your terminal or Anaconda prompt and create your conda environment
-```conda create -n wiser python=3.11
-conda activate wiser```
+```bash
+conda create -n wiser python=3.11
+conda activate wiser
+```
 2. Install LangGraph's Graph API
-```conda install conda-forge::langgraph-prebuilt```
-3. Download and Install Ollama Server
+```bash
+conda install conda-forge::langgraph-prebuilt
+```
+4. Download and Install Ollama Server
     a) Go to the Ollama Downloads Page.
     b) Choose the installer for your operating system (Windows, macOS, or Linux).
     c)	Run the installer and complete the setup.
     d)	Once installed, download a model by running this command in your command prompt:
-    ```ollama run llama3.1```
-4. Currently, WiSER implements the following open models:
+    ```bash
+   ollama run llama3.1
+    ```
+6. Currently, WiSER implements the following open models:
     a)	Instruct-based model: Llama3.1:8b
     b)	Reasoning-based model:
         i.	Mistral-NeMo:12b
         ii.	Gemma:12b
-5. Install packages (Async and Ollama)
+7. Install packages (Async and Ollama)
 ``` conda install -c conda-forge ollama python-dotenv –y ```
-6. Install MATLAB engine API for Python
+8. Install MATLAB engine API for Python
     a)	Open MATLAB.In the Command Window, type matlabroot and press Enter.
     b)	Copy the returned path (e.g., C:\Program Files\MATLAB\R2023b).
     c)	In your terminal (with the Conda environment still active), navigate to the Python engine folder:
@@ -43,7 +49,7 @@ conda activate wiser```
         ``` python -m pip install```
         iv. For MATLAB version R2022b and later:
         ```python -m pip install matlabengine```
-7.	Install Matplotlib
+9.	Install Matplotlib
 ```conda install matplotlib```
 
 
