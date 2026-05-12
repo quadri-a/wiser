@@ -14,7 +14,7 @@ To orchestrate the workflow for autonomous SRA, WiSER is equipped with the follo
 5) Allows loading, storing, auditing network data, user's SRA intents, and xLM's response using the File Manager.
 6) Render typical wireless environment/channel conditions using the Environment Manager.
 
-## Quickstart
+## Installations
 1. Open your terminal or Anaconda prompt and create your conda environment
 ```bash
 conda create -n wiser python=3.11
@@ -25,10 +25,10 @@ conda activate wiser
 conda install conda-forge::langgraph-prebuilt
 ```
 4. Download and Install Ollama Server
-    a. Go to the Ollama Downloads Page.
-    b. Choose the installer for your operating system (Windows, macOS, or Linux).
-    c.	Run the installer and complete the setup.
-    d.	Once installed, download a model by running this command in your command prompt:
+- Go to the Ollama Downloads Page.
+- Choose the installer for your operating system (Windows, macOS, or Linux).
+- Run the installer and complete the setup.
+- Once installed, download a model by running this command in your command prompt:
     ```bash
    ollama run llama3.1
     ```
