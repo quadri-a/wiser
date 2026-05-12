@@ -43,8 +43,14 @@ conda install conda-forge::langgraph-prebuilt
 - Open MATLAB.In the Command Window, type matlabroot and press Enter.
 - Copy the returned path (e.g., C:\Program Files\MATLAB\R2023b).
 - In your terminal (with the Conda environment still active), navigate to the Python engine folder:
-``` Windows: cd "matlabroot\extern\engines\python
-``` "macOS/Linux: cd "matlabroot/extern/engines/python"
+  For Windows:
+```bash
+cd "matlabroot\extern\engines\python
+```
+  For macOS/Linux:
+```bash
+cd "matlabroot/extern/engines/python
+```
 - Run the installation command:
 ```bash
 python -m pip install
