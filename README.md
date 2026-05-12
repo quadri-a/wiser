@@ -4,7 +4,7 @@ WiSER is developed to facilitate intent-based wireless network management.
 In particular, we have developed a Multi-Agent open source small/medium-sized Language Model (MAxLM)-based user 
 scheduling and resource allocation (SRA) scheme. Figure below illustrates the modeling of the AP-STA connections as the agents and their interaction with the WLAN environment as a Markov Decision Process (MDP) problem. 
 
-<img width="1744" height="1095" alt="sra_mdp" src="https://github.com/user-attachments/assets/81643975-e335-40a9-8959-84034e8f119a" />
+<img width="1744" height="1095" alt="sra_mdp" src="https://github.com/user-attachments/assets/49be6f5d-e5f2-4ffe-a5bc-4055f691c6db" />
 
 We have proposed the MAxLM-optimized SRA for the Uplink of a multiuser (MU) MIMO-OFDMA-enabled WLAN in our recent submission to IEEE Globecom 26.
 The preprint of the submitted paper will be made available soon.
