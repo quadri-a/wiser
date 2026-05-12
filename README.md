@@ -34,22 +34,28 @@ conda install conda-forge::langgraph-prebuilt
     ```
 6. Currently, WiSER implements the following open models:
     a)	Instruct-based model: Llama3.1:8b
-    b)	Reasoning-based model:
-        i.	Mistral-NeMo:12b
-        ii.	Gemma:12b
+    b)	Reasoning-based model: Mistral-NeMo:12b and Gemma:12b
 7. Install packages (Async and Ollama)
-``` conda install -c conda-forge ollama python-dotenv –y ```
-8. Install MATLAB engine API for Python
+```bash
+ conda install -c conda-forge ollama python-dotenv –y
+```
+9. Install MATLAB engine API for Python
     a)	Open MATLAB.In the Command Window, type matlabroot and press Enter.
     b)	Copy the returned path (e.g., C:\Program Files\MATLAB\R2023b).
     c)	In your terminal (with the Conda environment still active), navigate to the Python engine folder:
         i.	Windows: cd "matlabroot\extern\engines\python
         ii.	"macOS/Linux: cd "matlabroot/extern/engines/python"
         iii.	Run the installation command:
-        ``` python -m pip install```
+        ```bash
+       python -m pip install
+       ```
         iv. For MATLAB version R2022b and later:
-        ```python -m pip install matlabengine```
-9.	Install Matplotlib
-```conda install matplotlib```
+        ```bash
+           python -m pip install matlabengine
+        ```
+11.	Install Matplotlib
+```bash
+conda install matplotlib
+```
 
 
