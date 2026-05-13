@@ -1,8 +1,8 @@
 ## Overview
 This repository features the AI-assisted Wireless Systems Engineering and Research (WiSER) platform. 
-WiSER is developed to facilitate intent-based wireless user scheduling and resource allocation (SRA). 
-## Introduction
-In particular, we propose the Multi-Agent open source small/medium-sized Language Model (MAxLM)-based SRA for the Uplink of a multiuser (MU) MIMO-OFDMA-enabled WLAN. To perform SRA, WiSER implements the following open models and runs on a server equipped with the NVIDIA GeForce RTX 2080 Ti GPU (12GB VRAM):
+WiSER is developed to facilitate convenient integration of open source Language Models for wireless systems research and development. 
+## Wireless Systems Research: AI-assisted Scheduling & Resource Allocation (SRA)
+In our recent work, we have developed the Multi-Agent open source small/medium-sized Language Model (MAxLM)-based SRA scheme for the Uplink of a multiuser (MU) MIMO-OFDMA-enabled WLAN. To perform SRA, WiSER implements the following open models and runs on a server equipped with the NVIDIA GeForce RTX 2080 Ti GPU (12GB VRAM):
   - Instruct-based model: Llama3.1:8b
   - Reasoning-based model: Mistral-NeMo:12b and Gemma:12b
 
