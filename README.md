@@ -3,8 +3,8 @@ This repository features the AI-assisted Wireless Systems Engineering and Resear
 WiSER is developed to facilitate intent-based wireless user scheduling and resource allocation (SRA). 
 ## Introduction
 In particular, we propose the Multi-Agent open source small/medium-sized Language Model (MAxLM)-based SRA for the Uplink of a multiuser (MU) MIMO-OFDMA-enabled WLAN. Currently, WiSER implements the following open models:
-- Instruct-based model: Llama3.1:8b
-- Reasoning-based model: Mistral-NeMo:12b and Gemma:12b
+  - Instruct-based model: Llama3.1:8b
+  - Reasoning-based model: Mistral-NeMo:12b and Gemma:12b
 
 <div align="center"><figure>
   <img width="650" src="https://github.com/user-attachments/assets/16c4e78b-d2a2-4da5-a2da-b9c26ed99966" alt="Agent-Environment Interaction modeled as MDP"> 
