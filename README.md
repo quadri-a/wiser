@@ -1,15 +1,14 @@
 ## Overview
 This repository features the AI-assisted Wireless Systems Engineering and Research (WiSER) platform. 
 WiSER is developed to facilitate intent-based wireless user scheduling and resource allocation (SRA). 
-## Introduction and Main Contributions
+## Introduction
 In particular, we propose the Multi-Agent open source small/medium-sized Language Model (MAxLM)-based SRA for the Uplink of a multiuser (MU) MIMO-OFDMA-enabled WLAN. 
-Figure below illustrates the modeling of the WLAN AP-STA connections as the agents and their interaction in the WLAN environment as a Markov Decision Process (MDP) problem. The MDP components are the agent, agent's state space, action space, and feedback.
 
 <figure>
-  <img src="https://github.com/user-attachments/assets/16c4e78b-d2a2-4da5-a2da-b9c26ed99966" alt="Agent-Environment Interaction modeled as MDP">
+  <img width="500" src="https://github.com/user-attachments/assets/16c4e78b-d2a2-4da5-a2da-b9c26ed99966" alt="Agent-Environment Interaction modeled as MDP"> 
   <figcaption align="center">Figure 1: The WLAN AP-STA connections are considered as the agents and their interaction with the WLAN environment is modeled as a Markov Decision Process (MDP) problem.</figcaption>
 </figure>
-
+## Main Contributions
 To orchestrate the workflow for autonomous SRA, WiSER is equipped with the following features:
 1) Facilitates user's intent-based resource allocation strategy for multiple time-slotted wireless transmissions.
 2) Performs SRA autonomously by using the Adaptive Context Management feature in the Context Manager to characterize the dynamically changing WLAN environment to the xLM.
