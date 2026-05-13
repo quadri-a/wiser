@@ -34,7 +34,7 @@ cd wiser
 ```bash
 conda install conda-forge::langgraph-prebuilt
 ```
-4. Download and Install Ollama Server
+3. Download and Install Ollama Server
 - Go to the Ollama Downloads Page.
 - Choose the installer for your operating system (Windows, macOS, or Linux).
 - Run the installer and complete the setup.
@@ -42,11 +42,11 @@ conda install conda-forge::langgraph-prebuilt
     ```bash
    ollama run llama3.1
     ```
-7. Install packages (Async and Ollama)
+4. Install packages (Async and Ollama)
 ```bash
  conda install -c conda-forge ollama python-dotenv –y
 ```
-9. Install MATLAB engine API for Python
+5. Install MATLAB engine API for Python
 - Open MATLAB.In the Command Window, type matlabroot and press Enter.
 - Copy the returned path (e.g., C:\Program Files\MATLAB\R2023b).
 - In your terminal (with the Conda environment still active), navigate to the Python engine folder:
@@ -66,7 +66,7 @@ python -m pip install
  ```bash
  python -m pip install matlabengine
  ```
-10.	Install Matplotlib
+6.	Install Matplotlib
 ```bash
 conda install matplotlib
 ```
