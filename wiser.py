@@ -11,21 +11,23 @@ from wiser_state_schema import (
     StateOutput,
     )
 
-#local classes
+#WiSER modules realized as classes
 from Context_Manager import AdaptiveContextManagement
 from scheduler import scheduling_engine
 from parser import ModelOutputParser
 from Environment_Manager import EnvironmentManager
 from File_Manager import FileManager
 
+#Structured Output
 from wiser_modular_prompts import (
     json_schema_for_SRA,
     )
+# Intent-based Scheduling Strategies
 from intent_based_strategies import(
     BCQ,
     MAxLM,
     )
-#Packages to allow multiple asynchronous operations in Spyder/Jupyter
+#Packages for asynchronous operations
 from ollama import AsyncClient
 import nest_asyncio
 import asyncio
