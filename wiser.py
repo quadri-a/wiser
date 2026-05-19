@@ -11,23 +11,21 @@ from wiser_state_schema import (
     StateOutput,
     )
 
-#WiSER modules realized as classes
+#local classes
 from Context_Manager import AdaptiveContextManagement
 from scheduler import scheduling_engine
 from parser import ModelOutputParser
 from Environment_Manager import EnvironmentManager
 from File_Manager import FileManager
 
-#Structured Output
 from wiser_modular_prompts import (
     json_schema_for_SRA,
     )
-# Intent-based Scheduling Strategies
 from intent_based_strategies import(
     BCQ,
     MAxLM,
     )
-#Packages for asynchronous operations
+#Packages to allow multiple asynchronous operations in Spyder/Jupyter
 from ollama import AsyncClient
 import nest_asyncio
 import asyncio
@@ -77,7 +75,7 @@ def call_scheduler(state: AgentState):
                 print("Loading xLM: ",model_filename[model],", to perform UL SRA based on the user intent: ", strategy_pool["SRA_Algo"][intent_based_strategy])
             loop = asyncio.get_event_loop()
             xlm_schedule = loop.run_until_complete(async_xLMCall(scheduler, client, wiser_models[model], state.agent_observations["system_prompts"]))
-            
+        
             actions, flag_responseFails, fail_count = parse.xLM_intent(xlm_schedule) 
             if len(fail_count) == 0:
                 break
@@ -187,23 +185,16 @@ if __name__ == '__main__':
     # xLM selection 
     wiser_models = ["mistral-nemo:latest","llama3.1:8b","gemma3:12b"]
     model_filename = ["mistral-nemo12b","llama8b","gemma12b"]
-    model = 0
+    model = 1
     # Details to save outcome as files using the File Manager
     prompt_template = "_pt1_"  # Specific title for each prompt templates
-    try_num = 1                     # Every file name includes the number of runs made with each prompt template or experiments
+    try_num = 2                # Every file name includes the number of runs made with each prompt template or experiments
     
     # Intent-based Strategies -----------------------------------------------
-    intent_based_strategy = 1
+    intent_based_strategy = 0
     strategy_pool = {"intent":intent_based_strategy,"strategy":[BCQ, MAxLM], "SRA_Algo":["_MAxLM_performing_BCQ-based_SRA_", "_MAxLM-optimized_SRA_", "_BCQ-based_SRA_"]}
     print("Intent-based strategy to manage the network: ",strategy_pool["SRA_Algo"][intent_based_strategy])
-    
-    # File Manager loads WLAN channel data for 1200 episodes
-    print("File manager retrieving the collected WLAN channel data to simulate UL-SA and perform UL SRA....")
-    fileManager = FileManager(model_filename[model], prompt_template, try_num, strategy_pool["SRA_Algo"][intent_based_strategy])
-    wlan_data = fileManager.loadChanneldata(n_sta, n_ap)
-    wlan_observations = (np.char.replace(wlan_data, 'i', 'j').astype(complex))
-    print("Retrieval complete! WLAN channel data loaded for 1200 episodes.")
-    
+
     # Randomly selected 5 episodes:Test-time inference data set only =================================================================================999999999999999999999999999999999999999999999999999999999999999
     test_set = np.array([[5, 1200, 1100, 1080, 1025, 1140]])
     # Test Episode's parameters
@@ -235,29 +226,31 @@ if __name__ == '__main__':
     wiser_graph.add_edge("scheduled_transmission", END)
     # Compile WiSER StateGraph to invoke later-------------------------------
     compiledWiSERGraph = wiser_graph.compile()
-    print("Initiating WiSER and MATLAb engine....")
+    print("Initiating WiSER and MATLAb engine....\n")
     # Start MATLAB engine and open ports for asynchronous connection with client
     eng = matlab.engine.start_matlab()
     nest_asyncio.apply()
     client = AsyncClient() #instantiate async client
+    
+    # File Manager loads WLAN channel data for 1200 episodes
+    print("File manager retrieving the collected WLAN channel data to simulate UL-SA and perform UL SRA....")
+    fileManager = FileManager(model_filename[model], prompt_template, try_num, strategy_pool["SRA_Algo"][intent_based_strategy])
     
     # Start SRA for the test episodes
     for i in range(max_episodes):
         # Load test episode from the randomly selected episodes in test_set -------------------
         test_episode = int(test_set[0,i])
         # Extract the WLAN data for the selected test episode------------------
-        set_end = int( (test_set[0,i]*(max_timesteps-1)) )  
-        set_start = int( (test_set[0,i]*(max_timesteps-1)) - (max_timesteps+1) ) # -1 because WLAN obs data is 1 bigger then max timestep due to next state computations
-        obsEpi = wlan_observations[set_start:set_end,:]    
-        print("Starting SRA based on user intent, for the 50 UL-SA in the randomply selected test episode ", test_episode)
-        
+        obsEpi = (fileManager.loadChanneldata(n_sta, n_ap, test_episode))
+        print("Retrieval complete! WLAN channel data loaded for test episode ", test_episode)
+       
         # Initialize variables for UL-SA: UL-SA rate-sum, feedback from WLAN environment (currently only the xLM parsing error is utilized in the prompts)
         rate_ts = np.array(np.zeros(((max_timesteps),1))) # this will inlcude the rate-sum for the initial state
         # feedback from environment contains information on xLM parsing error and the rest is for plot/analysis/files
         env_feedback = {"ratesN": np.array(np.zeros((1,n_sta))), "final_actions": np.array(np.zeros((n_sta,n_ru))), "original_actions": np.array(np.zeros((n_sta,n_ru))), "flag_responseFails":np.array(np.zeros((1,n_sta))), "violation_count":0, "timestep":[]}
-    
-        # information on s_t and s_(t+1) passed on for dynamic prompt generation
         current_ts = obsEpi[0,:].reshape(1,len(obsEpi[0,:]))
+        print("Starting SRA based on user intent, for the 50 UL-SA in the randomply selected test episode ", test_episode)
+        
         trigger_ULSA = StateInput(
             current_observations = current_ts, 
             env_feedback=env_feedback, 
