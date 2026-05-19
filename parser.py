@@ -71,7 +71,6 @@ class ModelOutputParser():
             an array populated with the agents for which xLM's SRA intent could not be parsed.
             essenstially keeps count of parsing errors.
         """
-        
         actions = np.array(np.zeros((self.n_sta,self.n_ru)))
         flag_responseFails = np.array(np.zeros((1,self.n_sta)))
         failed_agents = []
@@ -83,21 +82,21 @@ class ModelOutputParser():
                 if len(resources) > 0:
                     for ru in range(len(resources)):
                         if resources[ru] > self.n_ru or resources[ru] < 1:
-                            actions[i,:] = self.action_combo[0,:]
+                            actions[i,:] = np.array(np.zeros((1,self.n_ru)))
                             print("xLM Response contains the invalid RU index in ", resources ," for RU ", ru, ". Nullifying RA ...")
                             break
                         else:   
                             actions[i,(resources[ru]-1)] = 1
                 if len(actions[i,:]) > self.n_ru:
-                    print("Parsed JSON output. But action array is longer...")
-                    
+                    print("Parsed JSON output. But action array is longer. Nullifying RA ...")
+                    actions[i,:] = np.array(np.zeros((1,self.n_ru)))
                     flag_responseFails[:,i] = 1
                     failed_agents.append(i)
                     fileManager.write_xlm_response(schedule, flag_responseFails[:,i] )
                 ac = actions[i,:]
                 if np.sum(actions[i,:]) > self.n_ru or np.sum(actions[i,:]) < 0 or len(ac[ac>1])>0 or len(ac[ac<0]) > 0:
-                    print("Parsed Output. But array contains invalid index (non-binary).")
-                    
+                    print("Parsed Output. But array contains invalid index (non-binary). Nullifying RA ...")
+                    actions[i,:] = np.array(np.zeros((1,self.n_ru)))
                     flag_responseFails[:,i] = 2
                     failed_agents.append(i)
                     fileManager.write_xlm_response(schedule, flag_responseFails[:,i] )
@@ -110,28 +109,27 @@ class ModelOutputParser():
                     if len(resources) > 0:
                         for ru in range(len(resources)):
                             if resources[ru] > self.n_ru or resources[ru] < 1:
-                                
+                                actions[i,:] = np.array(np.zeros((1,self.n_ru)))
                                 print("xLM Response contains the invalid RU index in ", resources ," for RU ", ru, ". Nullifying RA ...")
                                 break
                             else:   
                                 actions[i,(resources[ru]-1)] = 1
                     if len(actions[i,:]) > self.n_ru:
-                        print("Parsed JSON output. But action array is longer...")
-                        
+                        print("Parsed JSON output. But action array is longer. Nullifying RA ...")
+                        actions[i,:] = np.array(np.zeros((1,self.n_ru)))
                         flag_responseFails[:,i] = 1
                         failed_agents.append(i)
                         fileManager.write_xlm_response(schedule, flag_responseFails[:,i] )
                     ac = actions[i,:]
                     if np.sum(actions[i,:]) > self.n_ru or np.sum(actions[i,:]) < 0 or len(ac[ac>1])>0 or len(ac[ac<0]) > 0:
-                        print("Parsed Output. But array contains invalid index (non-binary).")                      
-                        
+                        print("Parsed Output. But array contains invalid index (non-binary). Nullifying RA ...")                      
+                        actions[i,:] = np.array(np.zeros((1,self.n_ru)))
                         flag_responseFails[:,i] = 2
                         failed_agents.append(i)
                         fileManager.write_xlm_response(schedule, flag_responseFails[:,i] )
     
                 except ValueError:
-                    
-                    
+                    actions[i,:] = np.array(np.zeros((1,self.n_ru)))
                     flag_responseFails[:,i] = 1 
                     failed_agents.append(i)
                     fileManager.write_xlm_response(schedule, flag_responseFails[:,i] )
