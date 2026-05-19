@@ -16,10 +16,10 @@ In our recent work, we have developed the Multi-Agent open source small/medium-s
 
 To orchestrate the workflow for autonomous SRA, WiSER is equipped with the following features:
 1) Facilitates user's intent-based SRA strategy for multiple time-slotted wireless transmissions.
-2) Performs SRA autonomously by using the Adaptive Context Management feature that enables the xLM to anticipate the best SRA strategy.
-3) Multi-agent realization enables the xLM to perform SRA in a decentralized manner, which simplifies complex optimization.
+2) Adaptive Context Management feature in the Context Manager enables the xLM to anticipate effective SRA strategies.
+3) Multi-agent realization enables the xLM to perform SRA in a decentralized manner, simplifying complex optimization.
 4) Parser module guarantees reliable parsing of the xLM's intent for SRA.
-5) File Manager loads, stores, audits network data, user's SRA intents, and xLM's response.
+5) File Manager loads, stores, and audits network data, user's SRA intents, and xLM's response, respectively.
 6) Environment Manager renders typical wireless environment/channel conditions.
 
 ## Dependencies
