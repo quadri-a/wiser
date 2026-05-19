@@ -12,7 +12,7 @@ class FileManager:
         self.strategy = strategy_desc
 
         
-    def loadChanneldata(self, N, M):
+    def loadChanneldata(self, N, M, E):
         """
         Parameters
         ----------
@@ -25,11 +25,12 @@ class FileManager:
         """
         
         if N == 10 and M == 4:
-            channel_data = "WLAN_Channel_SNR_Noise_data_4antAP_1200episodes_50ULSA.csv"
+            
+            channel_data = "WLAN_Channel_SNR_Noise_data_4antAP_episode"+str(E)+".csv"
         else:
             channel_data = "WLAN_Channel_SNR_Noise_data_8antAP_1200episodes_50ULSA.csv"
             
-        wlan_data = np.loadtxt(self.current_dir+'/10_stations/channel_data/'+channel_data, delimiter=',', dtype=str)
+        wlan_data = np.loadtxt(self.current_dir+'/10_stations/channel_data/'+channel_data, delimiter=',', dtype=np.complex128)
         return wlan_data
         
     
@@ -46,9 +47,9 @@ class FileManager:
         None.
         """
         if flag == 1:
-            action_allAgent = open(self.current_dir+'/10_stations/files/'+str(self.scheduler)+'/revised_SRA_with_Model_'+str(self.scheduler)+'_template'+str(self.pt)+'_and_strategy_'+str(self.strategy)+'_for_expNum_'+str(self.experiment)+'_and5Episodes.csv', 'w')
+            action_allAgent = open(self.current_dir+'/10_stations/files/'+str(self.scheduler)+'/revised_SRA_with_Model_'+str(self.scheduler)+'_template'+str(self.pt)+'_and_strategy_'+str(self.strategy)+'_for_expNum_'+str(self.experiment)+'_and5Episodes.csv', 'w', newline='')
         else:
-            action_allAgent = open(self.current_dir+'/10_stations/files/'+str(self.scheduler)+'/original_SRA_with_Model_'+str(self.scheduler)+'_template'+str(self.pt)+'_and_strategy_'+str(self.strategy)+'_expNum_'+str(self.experiment)+'_and5Episodes.csv', 'w')
+            action_allAgent = open(self.current_dir+'/10_stations/files/'+str(self.scheduler)+'/original_SRA_with_Model_'+str(self.scheduler)+'_template'+str(self.pt)+'_and_strategy_'+str(self.strategy)+'_expNum_'+str(self.experiment)+'_and5Episodes.csv', 'w', newline='')
         
         with action_allAgent:
             writer = csv.writer(action_allAgent, delimiter =",",quoting=csv.QUOTE_MINIMAL)
@@ -65,7 +66,7 @@ class FileManager:
         -------
         None.
         """
-        xlmErrors_allAgent = open(self.current_dir+'/10_stations/files/'+str(self.scheduler)+'/xLMParsingErrors_for_Model_'+str(self.scheduler)+'_using_template'+str(self.pt)+'_and_strategy_'+str(self.strategy)+'_for_expNum_'+str(self.experiment)+'_and5Episodes.csv', 'w')
+        xlmErrors_allAgent = open(self.current_dir+'/10_stations/files/'+str(self.scheduler)+'/xLMParsingErrors_for_Model_'+str(self.scheduler)+'_using_template'+str(self.pt)+'_and_strategy_'+str(self.strategy)+'_for_expNum_'+str(self.experiment)+'_and5Episodes.csv', 'w',newline='')
     
         with xlmErrors_allAgent:
             writer = csv.writer(xlmErrors_allAgent, delimiter =",",quoting=csv.QUOTE_MINIMAL)
@@ -83,7 +84,7 @@ class FileManager:
         -------
         None.
         """
-        violations_allAgent = open(self.current_dir+'/10_stations/files/'+str(self.scheduler)+'/spatialConstraint_Violations_by_Model_'+str(self.scheduler)+'_using_template'+str(self.pt)+'_and_strategy_'+str(self.strategy)+'_for_expNum_'+str(self.experiment)+'_and5Episodes.csv', 'w')
+        violations_allAgent = open(self.current_dir+'/10_stations/files/'+str(self.scheduler)+'/spatialConstraint_Violations_by_Model_'+str(self.scheduler)+'_using_template'+str(self.pt)+'_and_strategy_'+str(self.strategy)+'_for_expNum_'+str(self.experiment)+'_and5Episodes.csv', 'w',newline='')
     
         with violations_allAgent:
             writer = csv.writer(violations_allAgent, delimiter =",",quoting=csv.QUOTE_MINIMAL)
@@ -150,9 +151,9 @@ class FileManager:
         
         rate_sum_perTS = np.array(MAxLM_rates, dtype ='str')
         if intent == 0:
-            rates_perTS = open(self.current_dir+'/10_stations/files/'+str(self.scheduler)+'/ULSA_RateSums_for_'+'_EPI_'+str(E)+'_achievedBy_Model_'+str(self.scheduler)+'_using_template'+str(self.pt)+'_and_strategy_'+str(self.strategy)+'_expNum'+str(self.experiment)+'_andError_'+str(error_perc)+'percent.csv', 'w')
+            rates_perTS = open(self.current_dir+'/10_stations/files/'+str(self.scheduler)+'/ULSA_RateSums_for_'+'_EPI_'+str(E)+'_achievedBy_Model_'+str(self.scheduler)+'_using_template'+str(self.pt)+'_and_strategy_'+str(self.strategy)+'_expNum'+str(self.experiment)+'_andError_'+str(error_perc)+'percent.csv', 'w', newline='')
         else:
-            rates_perTS = open(self.current_dir+'/10_stations/files/'+str(self.scheduler)+'/ULSA_RateSums_for_'+'_EPI_'+str(E)+'_achievedBy_Model_'+str(self.scheduler)+'_using_template'+str(self.pt)+'_and_strategy_'+str(self.strategy)+'_expNum'+str(self.experiment)+'_andGain_'+str(gain)+'percent.csv', 'w')
+            rates_perTS = open(self.current_dir+'/10_stations/files/'+str(self.scheduler)+'/ULSA_RateSums_for_'+'_EPI_'+str(E)+'_achievedBy_Model_'+str(self.scheduler)+'_using_template'+str(self.pt)+'_and_strategy_'+str(self.strategy)+'_expNum'+str(self.experiment)+'_andGain_'+str(gain)+'percent.csv', 'w', newline='')
         with rates_perTS:
             writer = csv.writer(rates_perTS, delimiter =",",quoting=csv.QUOTE_MINIMAL)
             writer.writerows(rate_sum_perTS)
@@ -176,7 +177,7 @@ class FileManager:
         file_path = self.current_dir+'/10_stations/files/audit_llm_response/response_of_Model_'+str(self.scheduler)+'_with'+str(self.pt)+'_failedtoParse.txt'
         
         if os.path.exists(file_path):
-            with open(file_path, 'a') as file:
+            with open(file_path, 'a', newline='') as file:
                 if flag == 1:
                     file.write('---------------- This response does not contain any allocation index ------------- \n' + response + '\n')
                 if flag == 2:
@@ -186,7 +187,7 @@ class FileManager:
             print("Creating file and saving xLM response as it could not be parsed. ")  
             # Use 'w' mode to write to the file. If it exists, it overwrites.
             # We can also use 'a' here, which would also work perfectly.
-            with open(file_path, 'w') as file:
+            with open(file_path, 'w', newline='') as file:
                 if flag == 1:
                     file.write('---------------- This response is not formatted correctly ------------- \n' + response + '\n')
                 if flag == 2:
