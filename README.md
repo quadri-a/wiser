@@ -7,7 +7,7 @@ In our recent work, we have developed the Multi-Agent open source small/medium-s
   - Reasoning-based model: Mistral-NeMo:12b and Gemma:12b
 
 <div align="center"><figure>
-  <img width="650" src="https://github.com/user-attachments/assets/16c4e78b-d2a2-4da5-a2da-b9c26ed99966" alt="Agent-Environment Interaction modeled as MDP"> 
+  <img width="650" src="https://github.com/user-attachments/assets/2ce153d5-2936-4a18-955b-6c06c12b0ee7" alt="Agent-Environment interaction modeled as Markov Decision Process (MDP) problem"> 
   
   <p align="center"><sub>Figure 1: The WLAN AP-STA connections are the agents and their interaction with the WLAN environment is modeled as a Markov Decision Process (MDP) problem.</sub></p>
 </figure></div>
