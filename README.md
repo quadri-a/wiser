@@ -1,8 +1,7 @@
 ## Overview
-This repository features the AI-assisted Wireless Systems Engineering and Research (WiSER) platform. 
-WiSER is developed to facilitate convenient integration of open source Language Models for wireless systems research and development. 
+This repository features the AI-assisted Wireless Systems Engineering and Research (WiSER) platform. WiSER is designed to facilitate the convenient integration of open-source language models for wireless systems research and development.
 ## Wireless Systems Research: AI-assisted Scheduling & Resource Allocation (SRA)
-In our recent work, we have developed the Multi-Agent open source small/medium-sized Language Model (MAxLM)-based SRA scheme for the Uplink of a multiuser MIMO-OFDMA-enabled WLAN. To perform SRA, WiSER implements the following open models and runs on a server equipped with the NVIDIA GeForce RTX 2080 Ti GPU (12GB VRAM):
+In our recent work, we have developed the Multi-Agent open source small/medium-sized Language Model (MAxLM)-based SRA scheme for MU-MIMO-OFDMA-enabled Networks. To perform SRA, WiSER implements the following open models and runs on a server equipped with the NVIDIA GeForce RTX 2080 Ti GPU (12GB VRAM):
   - Instruct-based model: Llama3.1:8b
   - Reasoning-based model: Mistral-NeMo:12b and Gemma:12b
 
@@ -13,14 +12,14 @@ In our recent work, we have developed the Multi-Agent open source small/medium-s
 </figure></div>
 
 ## Main Contributions
-
 To orchestrate the workflow for autonomous SRA, WiSER is equipped with the following features:
-1) Facilitates user's intent-based SRA strategy for multiple time-slotted wireless transmissions.
-2) Adaptive Context Management feature in the Context Manager enables the xLM to anticipate effective SRA strategies.
-3) Multi-agent realization enables the xLM to perform SRA in a decentralized manner, simplifying complex optimization.
-4) Parser module guarantees reliable parsing of the xLM's intent for SRA.
-5) File Manager loads, stores, and audits network data, user's SRA intents, and xLM's response, respectively.
-6) Environment Manager renders typical wireless environment/channel conditions.
+
+1) Facilitates a user’s intent-based SRA strategy for multiple time-slotted wireless transmissions.
+2) The Adaptive Context Management feature in the Context Manager enables the xLM to anticipate effective SRA strategies.
+3) Multi-agent realization enables the xLM to perform SRA in a decentralized manner, simplifying complex optimization problems.
+4) The Parser module guarantees reliable interpretation of the xLM’s intent for SRA.
+5) The File Manager loads, stores, and audits network data, user SRA intents, and xLM responses, respectively.
+6) The Environment Manager simulates wireless environment and channel conditions.
 
 ## Dependencies
 1. Open your terminal or Anaconda prompt and create your conda environment
