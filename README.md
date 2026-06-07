@@ -5,14 +5,15 @@ In our recent work, we have developed the Multi-Agent open source small/medium-s
   - Instruct-based model: Llama3.1:8b
   - Reasoning-based model: Mistral-NeMo:12b and Gemma:12b
     
-Please cite the [paper on MAxLM-optimized SRA](https://arxiv.org/pdf/2605.16144), if you use the MA framework and WiSER platform.
+Please cite the [paper on MAxLM-optimized SRA](https://arxiv.org/pdf/2605.16144), if you use the MA framework and/or the WiSER platform.
+```bibtex
 @article{quadri2026maxlm,
   title={MAxLM: Multi-Agent Language Model-Based Scheduling and Resource Allocation in MU-MIMO-OFDMA-Enabled Wireless Networks},
   author={Quadri, Adnan and Li, Hongxiang},
   journal={arXiv preprint arXiv:2605.16144},
   year={2026}
 }
-
+```
 <div align="center"><figure>
   <img width="650" src="https://github.com/user-attachments/assets/3b283426-0c98-4d80-83a7-480b4bf7cc9b" alt="Agent-Environment interaction modeled as Markov Decision Process (MDP) problem"> 
   
