@@ -30,6 +30,8 @@ To orchestrate the workflow for autonomous SRA, WiSER is equipped with the follo
 5) The File Manager loads, stores, and audits network data, user SRA intents, and xLM responses, respectively.
 6) The Environment Manager simulates wireless environment and channel conditions.
 
+Summary of key findings is presented [here on LinkedIn](https://www.linkedin.com/posts/adnan-quadri_agentic-ai-for-wireless-systems-engineering-activity-7462864718374834176-1qdB?utm_source=share&utm_medium=member_desktop&rcm=ACoAAAgpr7sBMeqDBULdTe7tgTuMehyISGsiNMk)
+
 ## Dependencies
 1. Open your terminal or Anaconda prompt and create your conda environment
 ```bash
